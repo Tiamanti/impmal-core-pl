@@ -1,0 +1,54 @@
+{
+  "id": "impmal-core-pl",
+  "title": "Translation: Polish [ImpMal]",
+  "description": "Polish translation of Warhammer 40,000 Roleplay: Imperium Maledictum system.",
+  "version": "0.1.0",
+  "compatibility": {
+    "minimum": "12",
+    "verified": "12"
+  },
+  "authors": [
+    {
+      "name": "Tiamanti",
+      "flags": {}
+    }
+  ],
+  "esmodules": [
+    "babele-register.js"
+  ],
+  "relationships": {
+    "systems": [
+      {
+        "id": "impmal",
+        "manifest": "https://raw.githubusercontent.com/moo-man/ImpMal-FoundryVTT/master/system.json",
+        "compatibility": {
+          "minimum": "2.0.0",
+          "verified": "2"
+        },
+        "type": "system"
+      }
+    ],
+    "requires": [
+      {
+        "id": "babele",
+        "type": "module",
+        "manifest": "https://gitlab.com/riccisi/foundryvtt-babele/raw/master/module/module.json",
+        "compatibility": {
+          "minimum": "2.5.5",
+          "verified": "2"
+        }
+      }
+    ]
+  },
+  "languages": [
+    {
+      "lang": "pl",
+      "name": "Polski",
+      "path": "lang/pl.json",
+      "flags": {}
+    }
+  ],
+  "url": "https://github.com/Tiamanti/impmal-core-pl",
+  "manifest": "https://raw.githubusercontent.com/Tiamanti/impmal-core-pl/main/module.json",
+  "download": "https://github.com/Tiamanti/impmal-core-pl/archive/refs/heads/main.zip"
+}
