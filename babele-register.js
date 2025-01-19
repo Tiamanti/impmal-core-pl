@@ -55,12 +55,14 @@ Hooks.once('setup', () => {
 
     // This is to sort Skills in Character sheets alphabetically.
     game.actors.forEach(actor => {
-        var actorCopy = actor;
-        var sortedKeys = Object.keys(game.impmal.config.skills);
-        var oldSkills = Object.assign(Object.create(Object.getPrototypeOf(actor.system.skills)), actor.system.skills);
-        sortedKeys.map(key => {
-            delete oldSkills[key];
-        })
-        actorCopy.system.skills = Object.assign(oldSkills, ...sortedKeys.map((key) => ({[key]: actor.system.skills[key]})));
+        if (actor.system.skills !== undefined) {
+            var actorCopy = actor;
+            var sortedKeys = Object.keys(game.impmal.config.skills);
+            var oldSkills = Object.assign(Object.create(Object.getPrototypeOf(actor.system.skills)), actor.system.skills);
+            sortedKeys.map(key => {
+                delete oldSkills[key];
+            })
+            actorCopy.system.skills = Object.assign(oldSkills, ...sortedKeys.map((key) => ({[key]: actor.system.skills[key]})));
+        }
     });
 });
