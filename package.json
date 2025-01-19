@@ -1,6 +1,6 @@
 {
   "name": "impmal-core-pl",
-  "version": "1.0.0",
+  "version": "0.1.1",
   "description": "Polish translation of Warhammer 40,000 Roleplay: Imperium Maledictum system.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
