@@ -1,5 +1,17 @@
 import {Converters} from "../babele/script/converters.js";
 
+function getKeyByValue(object, value) {
+    return Object.keys(object).find(key => object[key] === value);
+}
+function sortByValue(obj) {
+    var sortedValues = Object.values(obj).sort();
+    var sortedKeys = [];
+    for(var i = 0; i < sortedValues.length; i++) {
+        sortedKeys.push(getKeyByValue(obj, sortedValues[i]));
+    }
+    return Object.assign({}, ...sortedKeys.map((key) => ({ [key]: obj[key] })));
+}
+
 Hooks.once('init', () => {
     if(typeof Babele !== 'undefined') {
 
@@ -36,4 +48,19 @@ Hooks.once('init', () => {
             }
         });
     }
+});
+
+Hooks.once('setup', () => {
+    game.impmal.config.skills = sortByValue(game.impmal.config.skills);
+
+    // This is to sort Skills in Character sheets alphabetically.
+    game.actors.forEach(actor => {
+        var actorCopy = actor;
+        var sortedKeys = Object.keys(game.impmal.config.skills);
+        var oldSkills = Object.assign(Object.create(Object.getPrototypeOf(actor.system.skills)), actor.system.skills);
+        sortedKeys.map(key => {
+            delete oldSkills[key];
+        })
+        actorCopy.system.skills = Object.assign(oldSkills, ...sortedKeys.map((key) => ({[key]: actor.system.skills[key]})));
+    });
 });
