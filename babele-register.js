@@ -1,8 +1,7 @@
-import {Converters} from "../babele/script/converters.js";
-
 function getKeyByValue(object, value) {
     return Object.keys(object).find(key => object[key] === value);
 }
+
 function sortByValue(obj) {
     var sortedValues = Object.values(obj).sort();
     var sortedKeys = [];
@@ -19,33 +18,10 @@ Hooks.once('init', () => {
         console.log('*** Babele ImpMal PL ***');
         console.log('***********************');
 
-        Babele.get().register({
+        game.babele.register({
             module: 'impmal-core-pl',
             lang: 'pl',
             dir: 'compendium'
-        });
-
-        Babele.get().registerConverters({
-            'impMalPages': (pages, translations) => {
-                pages = Converters._pages(pages, translations);
-
-                return pages.map(data => {
-                    if (!translations) {
-                        return data;
-                    }
-
-                    const translation = translations[data._id] || translations[data.name];
-
-                    if (!translation) {
-                        return data;
-                    }
-                    return foundry.utils.mergeObject(data, {
-                        system: {
-                            tooltip: translation.tooltip ?? data.system.tooltip
-                        }
-                    });
-                });
-            }
         });
     }
 });

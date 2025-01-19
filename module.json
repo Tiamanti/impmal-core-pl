@@ -1,8 +1,8 @@
 {
   "id": "impmal-core-pl",
-  "title": "Translation: Polish [ImpMal]",
+  "title": "Imperium Maledictum Translation: Polish",
   "description": "Polish translation of Warhammer 40,000 Roleplay: Imperium Maledictum system.",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "compatibility": {
     "minimum": "12",
     "verified": "12"
